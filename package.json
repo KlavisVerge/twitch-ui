@@ -1,6 +1,7 @@
 {
   "name": "twitch-ui",
   "dependencies": {
+    "twitch-stream": "KlavisVerge/twitch-stream",
     "@polymer/iron-image": "^3.0.0-pre.21",
     "@polymer/paper-item": "^3.0.0-pre.21",
     "@polymer/paper-spinner": "^3.0.0-pre.21",
