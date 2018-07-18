@@ -1,0 +1,14 @@
+{
+  "name": "twitch-ui",
+  "dependencies": {
+    "@polymer/iron-image": "^3.0.0-pre.21",
+    "@polymer/paper-item": "^3.0.0-pre.21",
+    "@polymer/paper-spinner": "^3.0.0-pre.21",
+    "@polymer/polymer": "^3.0.0"
+  },
+  "devDependencies": {
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "wct-browser-legacy": "^1.0.0"
+  },
+  "author": "Nick Phillips <imprecatorr@gmail.com>"
+}
