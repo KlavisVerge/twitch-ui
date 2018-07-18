@@ -7,8 +7,7 @@
     "@polymer/polymer": "^3.0.0"
   },
   "devDependencies": {
-    "@webcomponents/webcomponentsjs": "^2.0.0",
-    "wct-browser-legacy": "^1.0.0"
+    "@webcomponents/webcomponentsjs": "^2.0.0"
   },
   "author": "Nick Phillips <imprecatorr@gmail.com>"
 }
