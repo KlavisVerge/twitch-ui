@@ -9,20 +9,21 @@ class TwitchUiApp extends PolymerElement {
   static get template() {
     return html`
       <style>
-        :host {
-          display: flex;
-          flex-direction: column;
-          flex-wrap: wrap;
-          justify-content: center;
-          text-align: center;
-        }
+      :host {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+        text-align: center;
+      }
       </style>
       <paper-spinner id="spinner" active=[[active]]></paper-spinner>
       <iron-image src="[[imgsrc]]"></iron-image>
       <paper-item>[[gameDisplayName]] - Popular Streams</paper-item>
 
       <template is="dom-repeat" items="[[streams]]">
-        <twitch-stream-app thumbnailurl=[[item.thumbnail_url]] title=[[item.title]] viewercount=[[item.viewer_count]]></twitch-stream-app>
+        <a href=[[item.thumbnail_url]] target="_blank"><twitch-stream-app streamer=[[item.streamer]] thumbnailurl=[[item.thumbnail_url]] title=[[item.title]] viewercount=[[item.viewer_count]]></twitch-stream-app></a>
+        <hr style="width: 100%;"/>
       </template>
     `;
   }
@@ -74,6 +75,7 @@ class TwitchUiApp extends PolymerElement {
         for(var i = 0; i < unparseStreams.length; i++){
           unparseStreams[i].thumbnail_url = unparseStreams[i].thumbnail_url.replace('{width}', '248');
           unparseStreams[i].thumbnail_url = unparseStreams[i].thumbnail_url.replace('{height}', '140');
+          let streamer = 'https://www.twitch.tv/'; // add user here
         }
         this.streams = unparseStreams;
       });
