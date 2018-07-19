@@ -1,5 +1,6 @@
 {
   "name": "twitch-ui",
+  "main": "twitch-ui.js",
   "dependencies": {
     "twitch-stream": "KlavisVerge/twitch-stream",
     "@polymer/iron-image": "^3.0.0-pre.21",
@@ -8,6 +9,7 @@
     "@polymer/polymer": "^3.0.0"
   },
   "devDependencies": {
+    "@polymer/iron-demo-helpers": "^3.0.0-pre.19",
     "@webcomponents/webcomponentsjs": "^2.0.0"
   },
   "author": "Nick Phillips <imprecatorr@gmail.com>"

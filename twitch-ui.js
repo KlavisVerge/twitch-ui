@@ -1,11 +1,19 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
 import '@polymer/polymer/lib/elements/dom-repeat.js';
+import "@polymer/iron-image/iron-image.js"
+import "@polymer/paper-item/paper-item.js"
+import "@polymer/paper-spinner/paper-spinner.js"
+import "twitch-stream/twitch-stream.js"
 
 /**
+ * `twitch-ui`
+ * 
+ *
  * @customElement
  * @polymer
+ * @demo demo/index.html
  */
-class TwitchUiApp extends PolymerElement {
+class TwitchUi extends PolymerElement {
   static get template() {
     return html`
       <style>
@@ -50,7 +58,7 @@ class TwitchUiApp extends PolymerElement {
   ready() {
     super.ready();
     var url = 'https://3oemw4weak.execute-api.us-east-1.amazonaws.com/api/twitch-api';
-      var data = {gamename: this.gamename};
+      var data = {gameName: this.gamename};
 
       fetch(url, {
         method: 'POST',
@@ -75,4 +83,4 @@ class TwitchUiApp extends PolymerElement {
   }
 }
 
-window.customElements.define('twitch-ui-app', TwitchUiApp);
+window.customElements.define('twitch-ui', TwitchUi);
