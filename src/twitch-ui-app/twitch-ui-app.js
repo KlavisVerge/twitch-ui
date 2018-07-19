@@ -29,7 +29,7 @@ class TwitchUiApp extends PolymerElement {
   }
   static get properties() {
     return {
-      gameName: {
+      gamename: {
         type: String,
         value: 'fortnite'
       },
@@ -50,7 +50,7 @@ class TwitchUiApp extends PolymerElement {
   ready() {
     super.ready();
     var url = 'https://3oemw4weak.execute-api.us-east-1.amazonaws.com/api/twitch-api';
-      var data = {gameName: this.gameName};
+      var data = {gamename: this.gamename};
 
       fetch(url, {
         method: 'POST',
