@@ -30,7 +30,7 @@ class TwitchUi extends PolymerElement {
       <paper-item>[[gameDisplayName]] - Popular Streams</paper-item>
 
       <template is="dom-repeat" items="[[streams]]">
-        <a href=[[item.channel.url]] target="_blank"><twitch-stream-app streamer=[[item.channel.display_name]] thumbnailurl=[[item.preview.medium]] title=[[item.channel.status]] viewercount=[[item.viewers]]></twitch-stream-app></a>
+        <a href=[[item.channel.url]] target="_blank"><twitch-stream streamer=[[item.channel.display_name]] thumbnailurl=[[item.preview.medium]] title=[[item.channel.status]] viewercount=[[item.viewers]]></twitch-stream></a>
         <hr style="width: 100%;"/>
       </template>
     `;
