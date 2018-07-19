@@ -22,7 +22,7 @@ class TwitchUiApp extends PolymerElement {
       <paper-item>[[gameDisplayName]] - Popular Streams</paper-item>
 
       <template is="dom-repeat" items="[[streams]]">
-        <a href=[[item.thumbnail_url]] target="_blank"><twitch-stream-app streamer=[[item.streamer]] thumbnailurl=[[item.thumbnail_url]] title=[[item.title]] viewercount=[[item.viewer_count]]></twitch-stream-app></a>
+        <a href=[[item.channel.url]] target="_blank"><twitch-stream-app streamer=[[item.channel.display_name]] thumbnailurl=[[item.preview.medium]] title=[[item.channel.status]] viewercount=[[item.viewers]]></twitch-stream-app></a>
         <hr style="width: 100%;"/>
       </template>
     `;
@@ -70,14 +70,7 @@ class TwitchUiApp extends PolymerElement {
         this.imgsrc = img;
         this.gameDisplayName = response.game.data[0].name;
         this.$.spinner.active = false;
-        //TODO: update API to get username and not just ID
-        let unparseStreams = JSON.parse(response.streams).data;
-        for(var i = 0; i < unparseStreams.length; i++){
-          unparseStreams[i].thumbnail_url = unparseStreams[i].thumbnail_url.replace('{width}', '248');
-          unparseStreams[i].thumbnail_url = unparseStreams[i].thumbnail_url.replace('{height}', '140');
-          let streamer = 'https://www.twitch.tv/'; // add user here
-        }
-        this.streams = unparseStreams;
+        this.streams = JSON.parse(response.liveStreams).streams;
       });
   }
 }
