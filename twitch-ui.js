@@ -28,7 +28,7 @@ class TwitchUi extends PolymerElement {
         }
 
         paper-card {
-          padding: 5px 0 5px 0;
+          padding: 15px 0 15px 0;
         }
       </style>
       <paper-spinner id="spinner" active=[[active]]></paper-spinner>
