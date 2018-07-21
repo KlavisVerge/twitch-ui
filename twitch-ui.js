@@ -1,6 +1,7 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
 import '@polymer/polymer/lib/elements/dom-repeat.js';
 import "@polymer/iron-image/iron-image.js"
+import '@polymer/paper-card/paper-card.js';
 import "@polymer/paper-item/paper-item.js"
 import "@polymer/paper-spinner/paper-spinner.js"
 import "twitch-stream/twitch-stream.js"
@@ -30,7 +31,9 @@ class TwitchUi extends PolymerElement {
       <paper-item>[[gameDisplayName]] - Popular Streams</paper-item>
 
       <template is="dom-repeat" items="[[streams]]">
-        <a href=[[item.channel.url]] target="_blank"><twitch-stream streamer=[[item.channel.display_name]] thumbnailurl=[[item.preview.medium]] title=[[item.channel.status]] viewercount=[[item.viewers]]></twitch-stream></a>
+        <iron-swipeable-container>
+          <paper-card><a href=[[item.channel.url]] target="_blank"><twitch-stream streamer=[[item.channel.display_name]] thumbnailurl=[[item.preview.medium]] title=[[item.channel.status]] viewercount=[[item.viewers]]></twitch-stream></a></paper-card>
+        </iron-swipeable-container>
         <hr style="width: 100%;"/>
       </template>
     `;
