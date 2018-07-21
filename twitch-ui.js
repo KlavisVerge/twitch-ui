@@ -1,10 +1,10 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
 import '@polymer/polymer/lib/elements/dom-repeat.js';
-import "@polymer/iron-image/iron-image.js"
+import "@polymer/iron-image/iron-image.js";
 import '@polymer/paper-card/paper-card.js';
-import "@polymer/paper-item/paper-item.js"
-import "@polymer/paper-spinner/paper-spinner.js"
-import "twitch-stream/twitch-stream.js"
+import "@polymer/paper-item/paper-item.js";
+import "@polymer/paper-spinner/paper-spinner.js";
+import "twitch-stream/twitch-stream.js";
 
 /**
  * `twitch-ui`
