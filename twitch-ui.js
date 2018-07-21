@@ -27,7 +27,7 @@ class TwitchUi extends PolymerElement {
           text-align: center;
         }
 
-        paper-card {
+        .wrapper {
           padding: 15px 0 15px 0;
         }
       </style>
@@ -37,7 +37,9 @@ class TwitchUi extends PolymerElement {
 
       <template is="dom-repeat" items="[[streams]]">
         <iron-swipeable-container>
-          <paper-card><a href=[[item.channel.url]] target="_blank"><twitch-stream streamer=[[item.channel.display_name]] thumbnailurl=[[item.preview.medium]] title=[[item.channel.status]] viewercount=[[item.viewers]]></twitch-stream></a></paper-card>
+          <div class="wrapper">
+            <paper-card><a href=[[item.channel.url]] target="_blank"><twitch-stream streamer=[[item.channel.display_name]] thumbnailurl=[[item.preview.medium]] title=[[item.channel.status]] viewercount=[[item.viewers]]></twitch-stream></a></paper-card>
+          </div>
         </iron-swipeable-container>
       </template>
     `;
