@@ -44,7 +44,7 @@ class TwitchUi extends PolymerElement {
             </div>
           </iron-swipeable-container>
         </template>
-      </app-box>add imports
+      </app-box>
     `;
   }
   static get properties() {
