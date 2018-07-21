@@ -1,4 +1,5 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
+import '@polymer/app-layout/app-layout.js';
 import '@polymer/polymer/lib/elements/dom-repeat.js';
 import "@polymer/iron-image/iron-image.js";
 import "@polymer/iron-swipeable-container/iron-swipeable-container.js";
@@ -35,13 +36,15 @@ class TwitchUi extends PolymerElement {
       <iron-image src="[[imgsrc]]"></iron-image>
       <paper-item>[[gameDisplayName]] - Popular Streams</paper-item>
 
-      <template is="dom-repeat" items="[[streams]]">
-        <iron-swipeable-container>
-          <div class="wrapper">
-            <paper-card><a href=[[item.channel.url]] target="_blank"><twitch-stream streamer=[[item.channel.display_name]] thumbnailurl=[[item.preview.medium]] title=[[item.channel.status]] viewercount=[[item.viewers]]></twitch-stream></a></paper-card>
-          </div>
-        </iron-swipeable-container>
-      </template>
+      <app-box style="height: 260px;">
+        <template is="dom-repeat" items="[[streams]]">
+          <iron-swipeable-container>
+            <div class="wrapper">
+              <paper-card><a href=[[item.channel.url]] target="_blank"><twitch-stream streamer=[[item.channel.display_name]] thumbnailurl=[[item.preview.medium]] title=[[item.channel.status]] viewercount=[[item.viewers]]></twitch-stream></a></paper-card>
+            </div>
+          </iron-swipeable-container>
+        </template>
+      </app-box>add imports
     `;
   }
   static get properties() {
