@@ -1,6 +1,7 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
 import '@polymer/polymer/lib/elements/dom-repeat.js';
 import "@polymer/iron-image/iron-image.js";
+import "@polymer/iron-swipeable-container/iron-swipeable-container.js";
 import '@polymer/paper-card/paper-card.js';
 import "@polymer/paper-item/paper-item.js";
 import "@polymer/paper-spinner/paper-spinner.js";
@@ -24,6 +25,10 @@ class TwitchUi extends PolymerElement {
           flex-wrap: wrap;
           align-items: center;
           text-align: center;
+        }
+
+        paper-card {
+          padding: 5px 0 5px 0;
         }
       </style>
       <paper-spinner id="spinner" active=[[active]]></paper-spinner>
