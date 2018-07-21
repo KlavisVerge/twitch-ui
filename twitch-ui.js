@@ -18,13 +18,13 @@ class TwitchUi extends PolymerElement {
   static get template() {
     return html`
       <style>
-      :host {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        align-items: center;
-        text-align: center;
-      }
+        :host {
+          display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+          align-items: center;
+          text-align: center;
+        }
       </style>
       <paper-spinner id="spinner" active=[[active]]></paper-spinner>
       <iron-image src="[[imgsrc]]"></iron-image>
@@ -34,7 +34,6 @@ class TwitchUi extends PolymerElement {
         <iron-swipeable-container>
           <paper-card><a href=[[item.channel.url]] target="_blank"><twitch-stream streamer=[[item.channel.display_name]] thumbnailurl=[[item.preview.medium]] title=[[item.channel.status]] viewercount=[[item.viewers]]></twitch-stream></a></paper-card>
         </iron-swipeable-container>
-        <hr style="width: 100%;"/>
       </template>
     `;
   }
