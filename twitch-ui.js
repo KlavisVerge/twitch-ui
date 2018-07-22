@@ -42,8 +42,11 @@ class TwitchUi extends PolymerElement {
           background-color: lightgrey;
         }
 
-        paper-button.custom:hover {
+        paper-button {
           color: var(--paper-blue-900);
+        }
+
+        paper-button.custom:hover {
           background-color: var(--paper-light-blue-50);
         }
       </style>
