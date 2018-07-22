@@ -62,7 +62,9 @@ class TwitchUi extends PolymerElement {
         <iron-swipeable-container class="swipeable-container">
           <div class="wrapper">
             <paper-card>
-              <a href=[[item.channel.url]] target="_blank" class="padding-class"><twitch-stream streamer=[[item.channel.display_name]] thumbnailurl=[[item.preview.medium]] title=[[item.channel.status]] viewercount=[[item.viewers]]></twitch-stream></a>
+              <div class="padding-class">
+                <a href=[[item.channel.url]] target="_blank"><twitch-stream streamer=[[item.channel.display_name]] thumbnailurl=[[item.preview.medium]] title=[[item.channel.status]] viewercount=[[item.viewers]]></twitch-stream></a>
+              </div>
             </paper-card>
           </div>
         </iron-swipeable-container>
