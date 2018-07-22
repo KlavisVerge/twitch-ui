@@ -2,7 +2,6 @@ import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
 import '@polymer/polymer/lib/elements/dom-repeat.js';
 import {} from '@polymer/polymer/lib/elements/dom-if.js';
 import "@polymer/iron-image/iron-image.js";
-import "@polymer/iron-swipeable-container/iron-swipeable-container.js";
 import '@polymer/paper-card/paper-card.js';
 import '@polymer/paper-button/paper-button.js';
 import "@polymer/paper-item/paper-item.js";
@@ -33,10 +32,6 @@ class TwitchUi extends PolymerElement {
           padding: 15px 0 15px 0;
         }
 
-        .swipeable-container {
-          width: 100%;
-        }
-
         paper-card {
           width: 95%;
         }
@@ -54,27 +49,23 @@ class TwitchUi extends PolymerElement {
         }
       </style>
       <paper-spinner id="spinner" active=[[active]]></paper-spinner>
-      <paper-item><h3>[[gameDisplayName]] - Popular Streams (Swipe to remove)</h3></paper-item>
-      <iron-swipeable-container class="swipeable-container">
+      <paper-item><h3>[[gameDisplayName]] - Popular Streams</h3></paper-item>
+      <div class="wrapper">
+        <paper-card>
+          <div class="wrapper">
+            <iron-image src="[[imgsrc]]"></iron-image>
+          </div>
+        </paper-card>
+      </div>
+
+      <template is="dom-repeat" items="[[initialstreams]]">
         <div class="wrapper">
           <paper-card>
-            <div class="wrapper">
-              <iron-image src="[[imgsrc]]"></iron-image>
+            <div class="padding-class">
+              <a href=[[item.channel.url]] target="_blank"><twitch-stream streamer=[[item.channel.display_name]] thumbnailurl=[[item.preview.medium]] title=[[item.channel.status]] viewercount=[[item.viewers]]></twitch-stream></a>
             </div>
           </paper-card>
         </div>
-      </iron-swipeable-container>
-
-      <template is="dom-repeat" items="[[initialstreams]]">
-        <iron-swipeable-container class="swipeable-container">
-          <div class="wrapper">
-            <paper-card>
-              <div class="padding-class">
-                <a href=[[item.channel.url]] target="_blank"><twitch-stream streamer=[[item.channel.display_name]] thumbnailurl=[[item.preview.medium]] title=[[item.channel.status]] viewercount=[[item.viewers]]></twitch-stream></a>
-              </div>
-            </paper-card>
-          </div>
-        </iron-swipeable-container>
       </template>
       <template is="dom-if" if="[[streamsexceed]]">
         <paper-button on-tap="_showRest" class="custom">Show More</paper-button>

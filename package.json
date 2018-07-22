@@ -4,7 +4,6 @@
   "dependencies": {
     "twitch-stream": "KlavisVerge/twitch-stream",
     "@polymer/iron-image": "^3.0.0-pre.21",
-    "@polymer/iron-swipeable-container": "^3.0.0-pre.21",
     "@polymer/paper-button": "^3.0.0-pre.21",
     "@polymer/paper-card": "^3.0.0-pre.21",
     "@polymer/paper-item": "^3.0.0-pre.21",
