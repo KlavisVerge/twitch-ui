@@ -39,8 +39,11 @@ class TwitchUi extends PolymerElement {
 
         paper-card {
           width: 100%;
-          --paper-card-ink: var(--paper-blue-900);
           background-color: lightgrey;
+        }
+
+        paper-button {
+          --paper-button-ink-color: var(--paper-blue-900);
         }
       </style>
       <paper-spinner id="spinner" active=[[active]]></paper-spinner>
