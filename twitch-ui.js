@@ -39,7 +39,6 @@ class TwitchUi extends PolymerElement {
 
         paper-card {
           width: 100%;
-          background-color: lightgrey;
         }
 
         paper-button {
