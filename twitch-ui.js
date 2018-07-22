@@ -55,11 +55,15 @@ class TwitchUi extends PolymerElement {
       </style>
       <paper-spinner id="spinner" active=[[active]]></paper-spinner>
       <paper-item><h3>[[gameDisplayName]] - Popular Streams (Swipe to remove)</h3></paper-item>
-      <paper-card>
+      <iron-swipeable-container class="swipeable-container">
         <div class="wrapper">
-          <iron-image src="[[imgsrc]]"></iron-image>
+          <paper-card>
+            <div class="wrapper">
+              <iron-image src="[[imgsrc]]"></iron-image>
+            </div>
+          </paper-card>
         </div>
-      </paper-card>
+      </iron-swipeable-container>
 
       <template is="dom-repeat" items="[[initialstreams]]">
         <iron-swipeable-container class="swipeable-container">
