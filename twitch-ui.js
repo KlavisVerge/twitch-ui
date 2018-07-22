@@ -49,6 +49,10 @@ class TwitchUi extends PolymerElement {
         paper-button.custom:hover {
           background-color: var(--paper-light-blue-50);
         }
+
+        .padding-class {
+          padding: 5px 0 0 0;
+        }
       </style>
       <paper-spinner id="spinner" active=[[active]]></paper-spinner>
       <iron-image src="[[imgsrc]]"></iron-image>
@@ -57,7 +61,9 @@ class TwitchUi extends PolymerElement {
       <template is="dom-repeat" items="[[initialstreams]]">
         <iron-swipeable-container class="swipeable-container">
           <div class="wrapper">
-            <paper-card><a href=[[item.channel.url]] target="_blank"><twitch-stream streamer=[[item.channel.display_name]] thumbnailurl=[[item.preview.medium]] title=[[item.channel.status]] viewercount=[[item.viewers]]></twitch-stream></a></paper-card>
+            <paper-card>
+              <a href=[[item.channel.url]] target="_blank" class="padding-class"><twitch-stream streamer=[[item.channel.display_name]] thumbnailurl=[[item.preview.medium]] title=[[item.channel.status]] viewercount=[[item.viewers]]></twitch-stream></a>
+            </paper-card>
           </div>
         </iron-swipeable-container>
       </template>
