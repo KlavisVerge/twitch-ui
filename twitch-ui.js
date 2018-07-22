@@ -120,8 +120,8 @@ class TwitchUi extends PolymerElement {
       console.error('Error:', error);
     })
     .then(response => {
-      let img = response.game.data[0].box_art_url.replace('{width}', '170');
-      img = img.replace('{height}', '226');
+      let img = response.game.data[0].box_art_url.replace('{width}', '85');
+      img = img.replace('{height}', '113');
       this.imgsrc = img;
       this.gameDisplayName = response.game.data[0].name;
       this.$.spinner.active = false;
