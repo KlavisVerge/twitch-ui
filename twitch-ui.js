@@ -1,9 +1,10 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
-import '@polymer/app-layout/app-layout.js';
 import '@polymer/polymer/lib/elements/dom-repeat.js';
+import {} from '@polymer/polymer/lib/elements/dom-if.js';
 import "@polymer/iron-image/iron-image.js";
 import "@polymer/iron-swipeable-container/iron-swipeable-container.js";
 import '@polymer/paper-card/paper-card.js';
+import '@polymer/paper-button/paper-button.js';
 import "@polymer/paper-item/paper-item.js";
 import "@polymer/paper-spinner/paper-spinner.js";
 import "twitch-stream/twitch-stream.js";
@@ -36,15 +37,16 @@ class TwitchUi extends PolymerElement {
       <iron-image src="[[imgsrc]]"></iron-image>
       <paper-item>[[gameDisplayName]] - Popular Streams</paper-item>
 
-      <app-box style="height: 260px;">
-        <template is="dom-repeat" items="[[streams]]">
-          <iron-swipeable-container>
-            <div class="wrapper">
-              <paper-card><a href=[[item.channel.url]] target="_blank"><twitch-stream streamer=[[item.channel.display_name]] thumbnailurl=[[item.preview.medium]] title=[[item.channel.status]] viewercount=[[item.viewers]]></twitch-stream></a></paper-card>
-            </div>
-          </iron-swipeable-container>
-        </template>
-      </app-box>
+      <template is="dom-repeat" items="[[initialstreams]]">
+        <iron-swipeable-container>
+          <div class="wrapper">
+            <paper-card><a href=[[item.channel.url]] target="_blank"><twitch-stream streamer=[[item.channel.display_name]] thumbnailurl=[[item.preview.medium]] title=[[item.channel.status]] viewercount=[[item.viewers]]></twitch-stream></a></paper-card>
+          </div>
+        </iron-swipeable-container>
+      </template>
+      <template is="dom-if" if="[[streamsexceed]]">
+        <paper-button on-tap="_showRest">Show More</paper-button>
+      </template>
     `;
   }
   static get properties() {
@@ -61,8 +63,16 @@ class TwitchUi extends PolymerElement {
       imgsrc: {
         type: String
       },
+      initialstreams: {
+        type: Array
+      },
       streams: {
         type: Array
+      },
+      streamsexceed: {
+        type:  Boolean,
+        reflectToAttribute: true,
+        value: false
       }
     };
   }
@@ -70,28 +80,37 @@ class TwitchUi extends PolymerElement {
   ready() {
     super.ready();
     var url = 'https://3oemw4weak.execute-api.us-east-1.amazonaws.com/api/twitch-api';
-      var data = {gameName: this.gamename};
+    var data = {gameName: this.gamename};
 
-      fetch(url, {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers:{
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
-      }).then(res => res.json())
-      .catch(error => {
-        this.$.spinner.active = false;
-        console.error('Error:', error);
-      })
-      .then(response => {
-        let img = response.game.data[0].box_art_url.replace('{width}', '170');
-        img = img.replace('{height}', '226');
-        this.imgsrc = img;
-        this.gameDisplayName = response.game.data[0].name;
-        this.$.spinner.active = false;
-        this.streams = JSON.parse(response.liveStreams).streams;
-      });
+    fetch(url, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers:{
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    }).then(res => res.json())
+    .catch(error => {
+      this.$.spinner.active = false;
+      console.error('Error:', error);
+    })
+    .then(response => {
+      let img = response.game.data[0].box_art_url.replace('{width}', '170');
+      img = img.replace('{height}', '226');
+      this.imgsrc = img;
+      this.gameDisplayName = response.game.data[0].name;
+      this.$.spinner.active = false;
+      this.streams = JSON.parse(response.liveStreams).streams;
+      if(this.streams.length > 2){
+        this.streamsexceed = true;
+        this.initialstreams = this.streams.slice(0, 2);
+      }
+    });
+  }
+
+  _showRest() {
+    this.initialstreams = this.initialstreams.concat(this.streams.slice(2, this.streams.length));
+    this.streamsexceed = false;
   }
 }
 
