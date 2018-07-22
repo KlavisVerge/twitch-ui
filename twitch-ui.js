@@ -62,7 +62,7 @@ class TwitchUi extends PolymerElement {
         </iron-swipeable-container>
       </template>
       <template is="dom-if" if="[[streamsexceed]]">
-        <paper-button on-tap="_showRest">Show More</paper-button>
+        <paper-button on-tap="_showRest" class="custom">Show More</paper-button>
       </template>
     `;
   }
