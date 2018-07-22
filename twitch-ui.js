@@ -30,6 +30,7 @@ class TwitchUi extends PolymerElement {
 
         .wrapper {
           padding: 15px 0 15px 0;
+          width: 100%;
         }
 
         paper-card {
