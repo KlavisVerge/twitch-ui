@@ -34,7 +34,7 @@ class TwitchUi extends PolymerElement {
         }
 
         paper-card {
-          width: 95%;
+          width: 100%;
         }
 
         paper-button {
