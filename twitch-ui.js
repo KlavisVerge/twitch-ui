@@ -105,6 +105,7 @@ class TwitchUi extends PolymerElement {
     super.ready();
     var url = 'https://3oemw4weak.execute-api.us-east-1.amazonaws.com/api/twitch-api';
     var data = {gameName: this.gamename};
+    let err = false;
 
     fetch(url, {
       method: 'POST',
@@ -117,8 +118,12 @@ class TwitchUi extends PolymerElement {
     .catch(error => {
       this.$.spinner.active = false;
       console.error('Error:', error);
+      err = true;
     })
     .then(response => {
+      if(err){
+        return;
+      }
       let img = response.game.data[0].box_art_url.replace('{width}', '170');
       img = img.replace('{height}', '226');
       this.imgsrc = img;
