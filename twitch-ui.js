@@ -107,7 +107,7 @@ class TwitchUi extends PolymerElement {
     let err = false;
 
     fetch(url, {
-      method: 'POST',
+      method: 'GET',
       headers:{
         'Accept': 'application/json',
         'Content-Type': 'application/json'
