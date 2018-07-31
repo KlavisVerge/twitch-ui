@@ -103,13 +103,11 @@ class TwitchUi extends PolymerElement {
 
   ready() {
     super.ready();
-    var url = 'https://3oemw4weak.execute-api.us-east-1.amazonaws.com/api/twitch-api';
-    var data = {gameName: this.gamename};
+    var url = 'https://xupmhdl2g5.execute-api.us-east-1.amazonaws.com/api/twitch-api?gameName=' + this.gameName;
     let err = false;
 
     fetch(url, {
       method: 'POST',
-      body: JSON.stringify(data),
       headers:{
         'Accept': 'application/json',
         'Content-Type': 'application/json'
