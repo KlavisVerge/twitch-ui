@@ -103,7 +103,7 @@ class TwitchUi extends PolymerElement {
 
   ready() {
     super.ready();
-    var url = 'https://xupmhdl2g5.execute-api.us-east-1.amazonaws.com/api/twitch-api?gameName=' + this.gameName;
+    var url = 'https://xupmhdl2g5.execute-api.us-east-1.amazonaws.com/api/twitch-api?gameName=' + this.gamename;
     let err = false;
 
     fetch(url, {
